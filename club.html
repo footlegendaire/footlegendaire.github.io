@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FootLégendaire – Clubs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="style.css">
+     <link rel="stylesheet" href="club.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div>
+                <div class="logo">FOOT<span class="accent">LEGENDAIRE</span></div>
+                <ul class="nav-links">
+                    <li>
+                        <a href="index.html">
+                            <img src="image/Home.jpeg" alt="" class="nav-img">
+                            Accueil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="championat.html">
+                            <img src="image/Trophy.jpeg" alt="" class="nav-img">
+                            Championnats
+                        </a>
+                    </li>
+                    <li>
+                        <a href="club.html" class="active">
+                            <img src="image/club.jpeg" alt="" class="nav-img">
+                            Clubs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="business.html">
+                            <img src="image/busness.jpeg" alt="" class="nav-img">
+                            Business
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apropos.html">
+                            <img src="image/apropos.jpeg" alt="" class="nav-img">
+                            À propos
+                        </a>
+                    </li>
+                </ul>
+                <a href="form.html" class="inscription">Inscription</a>
+            </div>
+        </div>
+    </header>
+     <main class="content-section container">
+
+        <!-- ══ HERO ══ -->
+        <section class="hero">
+            <div>
+                <h1 class="hero-titre">Les clubs<br><em>légendaires</em></h1>
+                <p class="hero-sub">Derrière chaque trophée se cachent des décennies de sacrifices, de génie et de grandeur. FootLégendaire vous présente les clubs qui ont façonné l'histoire du football.</p>
+                <div class="hero-meta">
+                    <span>Mars 2025</span>
+                    <span>3 clubs</span>
+                    <span>Lecture rapide</span>
+                </div>
+            </div>
+            <div class="hero-stats">
+                <div>
+                    <div class="hero-stat-val">23</div>
+                    <div class="hero-stat-etiq">Ligues des Champions</div>
+                </div>
+                <div>
+                    <div class="hero-stat-val">+120</div>
+                    <div class="hero-stat-etiq">Titres nationaux</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ══ CLUBS ══ -->
+        <section class="section">
+            <div class="entete-section">
+                <h2>Top 3 Clubs</h2>
+                <div class="ligne-separateur"></div>
+                <div class="etiquette-section">Classement mondial</div>
+            </div>
+
+            <!-- ── REAL MADRID ── -->
+            <article class="carte-club" style="--couleur-halo: rgba(200,16,46,0.18);">
+                <div class="bande-accent" style="background: linear-gradient(90deg,#7a000e,#c8102e,#ff3355,#c8102e,#7a000e);"></div>
+                <div class="carte-haut">
+                    <div class="carte-identite" style="background:linear-gradient(150deg,#140205,#0a0102,#110304);">
+                        <div class="numero-carte">01</div>
+                        <div class="enveloppe-logo">
+                            <div class="logo-placeholder">
+                                <svg class="icone-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                <span class="texte-logo"><img src="imagemadride/logo.jpeg" alt="" height="20px"></span>
+                            </div>
+                        </div>
+                        <div class="nom-club">Real Madrid CF</div>
+                        <div class="sous-club">🇪🇸 Madrid · La Liga</div>
+                        <div class="badge-fondation">Fondé en 1902</div>
+                    </div>
+                    <div class="carte-stats">
+                        <div class="etiquette-stats">Palmarès</div>
+                        <div class="ligne-stat" style="--couleur-stat:#c8102e">
+                            <span class="nom-stat">Ligue des Champions</span>
+                            <span class="chiffre-stat" style="color:#c8102e">15</span>
+                        </div>
+                        <div class="ligne-stat" style="--couleur-stat:#c8102e">
+                            <span class="nom-stat">Titres Liga</span>
+                            <span class="chiffre-stat" style="color:#c8102e">36</span>
+                        </div>
+                        <div class="ligne-stat" style="--couleur-stat:#c8102e">
+                            <span class="nom-stat">Coupes du Monde des clubs</span>
+                            <span class="chiffre-stat" style="color:#c8102e">7</span>
+                        </div>
+                        <div class="ligne-stat" style="--couleur-stat:#c8102e">
+                            <span class="nom-stat">Coupes d'Europe UEFA</span>
+                            <span class="chiffre-stat" style="color:#d12548">2</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="separateur-carte"></div>
+                <div class="carte-bas">
+                    <div class="etiquette-joueurs">Légendes du club</div>
+                    <div class="grille-joueurs">
+                        <div class="tuile-joueur" style="--couleur-tuile:rgba(200,16,46,0.55);">
+                            <div class="avatar-joueur" id="ronaldo"></div>
+                            <div class="nom-joueur">Cristiano Ronaldo</div>
+                            <div class="role-joueur">Attaquant · 5× Ballon d'Or.5× ligues des champions.Puissance physique, vitesse, frappe redoutable, jeu aérien exceptionnel.parmis les meilleurs joueurs du siécle</div>
+                            <div class="ere-joueur">2009 – 2018</div>
+                        </div>
+                        <div class="tuile-joueur" style="--couleur-tuile:rgba(200,16,46,0.55);">
+                            <div class="avatar-joueur" id="zidane"></div>
+                            <div class="nom-joueur">Zinédine Zidane</div>
+                            <div class="role-joueur">Milieu · Ballon d'Or 1998.Ligue des Champions 2002 (but légendaire en finale).Champion du monde 1998.</div>
+                            <div class="ere-joueur">2001 – 2006</div>
+                        </div>
+                        <div class="tuile-joueur" style="--couleur-tuile:rgba(200,16,46,0.55);">
+                            <div class="avatar-joueur" id="modric" ></div>
+                            <div class="nom-joueur">Luka Modrić</div>
+                            <div class="role-joueur">Milieu · Ligues des Champions.Ballon d’Or 2018.4 Liga.Considéré comme l’un des meilleurs milieux de terrain de l’histoire du Real Madrid.</div>
+                            <div class="ere-joueur">2012 – 2025</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pied-carte">
+                    <p class="description-pied">Le club le plus titré d'Europe. 15 Ligues des Champions et une aura incomparable depuis 1902.</p>
+                 <a href="https://www.realmadrid.com/fr-FR"><button class="bouton-explorer" style="background:#c8102e;color:#fff">Explorer →</button></a>
+                </div>
+            </article>
+
+            <!-- ── FC BARCELONA ── -->
+            <article class="carte-club" style="--couleur-halo: rgba(3,70,148,0.2);">
+                <div class="bande-accent" style="background: linear-gradient(90deg,#012260,#034694,#4a90d9,#034694,#012260);"></div>
+                <div class="carte-haut">
+                    <div class="carte-identite" style="background:linear-gradient(150deg,#00112e,#000b1e,#00102a);">
+                        <div class="numero-carte">02</div>
+                        <div class="enveloppe-logo">
+                            <div class="logo-placeholder">
+                                <svg class="icone-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                <span class="texte-logo"><img src="imagebarca/logo.jpeg" alt=""></span>
+                            </div>
+                        </div>
+                        <div class="nom-club">FC Barcelona</div>
+                        <div class="sous-club">🇪🇸 Barcelone · La Liga</div>
+                        <div class="badge-fondation">Fondé en 1899</div>
+                    </div>
+                    <div class="carte-stats">
+                        <div class="etiquette-stats">Palmarès</div>
+                        <div class="ligne-stat" style="--couleur-stat:#4a90d9">
+                            <span class="nom-stat">Ligue des Champions</span>
+                            <span class="chiffre-stat" style="color:#4a90d9">5</span>
+                        </div>
+                        <div class="ligne-stat" style="--couleur-stat:#4a90d9">
+                            <span class="nom-stat">Titres Liga</span>
+                            <span class="chiffre-stat" style="color:#4a90d9">27</span>
+                        </div>
+                        <div class="ligne-stat" style="--couleur-stat:#4a90d9">
+                            <span class="nom-stat">Coupes du Monde des clubs</span>
+                            <span class="chiffre-stat" style="color:#4a90d9">3</span>
+                        </div>
+                        <div class="ligne-stat" style="--couleur-stat:#4a90d9">
+                            <span class="nom-stat">Coupes d'Europe UEFA</span>
+                            <span class="chiffre-stat" style="color:#4a90d9">5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="separateur-carte"></div>
+                <div class="carte-bas">
+                    <div class="etiquette-joueurs">Légendes du club</div>
+                    <div class="grille-joueurs">
+                        <div class="tuile-joueur" style="--couleur-tuile:rgba(74,144,217,0.55);">
+                            <div class="avatar-joueur"  id="messi"></div>
+                            <div class="nom-joueur">Lionel Messi</div>
+                            <div class="role-joueur">Attaquant · 8× Ballon d'Or . 10 liga.Dribbles courts, vision du jeu exceptionnelle, efficacité devant le but.parmis les meilleurs joueurs du siécle</div>
+                            <div class="ere-joueur">2004 – 2021</div>
+                        </div>
+                        <div class="tuile-joueur" style="--couleur-tuile:rgba(74,144,217,0.55);">
+                            <div class="avatar-joueur"  id="puyol"></div>
+                            <div class="nom-joueur">Carles Puyol</div>
+                            <div class="role-joueur">Defenseur central · 3× League de champions . Champion du monde 2010 .Défenseur réputé pour sa combativité, son sens du placement et son leadership.</div>
+                            <div class="ere-joueur">1999 – 2014</div>
+                        </div>
+                        <div class="tuile-joueur" style="--couleur-tuile:rgba(74,144,217,0.55);">
+                            <div class="avatar-joueur" id="ronaldinho"></div>
+                            <div class="nom-joueur">Ronaldinho</div>
+                            <div class="role-joueur">Attaquant · Ballon d'Or 2005. Technique flamboyante, dribbles spectaculaires, sourires et joie de jouer.parmis les meilleurs joueurs du siécle</div>
+                            <div class="ere-joueur">2003 – 2008</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pied-carte">
+                    <p class="description-pied">Berceau du tiki-taka et de remontada. 5 Ligues des Champions et un football qui a révolutionné le monde.</p>
+                    <a href="https://www.fcbarcelona.com/en/"><button class="bouton-explorer" style="background:#034694;color:#fff">Explorer →</button></a>
+                </div>
+            </article>
+
+            <!-- ── AC MILAN ── -->
+            <article class="carte-club" style="--couleur-halo: rgba(218,41,28,0.18);">
+                <div class="bande-accent" style="background: linear-gradient(90deg,#8a0e08,#DA291C,#ff5e54,#DA291C,#8a0e08);"></div>
+                <div class="carte-haut">
+                    <div class="carte-identite" style="background:linear-gradient(150deg,#160100,#0c0100,#130100);">
+                        <div class="numero-carte">03</div>
+                        <div class="enveloppe-logo">
+                            <div class="logo-placeholder">
+                                <svg class="icone-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                <span class="texte-logo"><img src="imagemilan/logo.jpeg" alt=""></span>
+                            </div>
+                        </div>
+                        <div class="nom-club">AC Milan</div>
+                        <div class="sous-club">🇮🇹 Milan · Serie A</div>
+                        <div class="badge-fondation">Fondé en 1899</div>
+                    </div>
+                    <div class="carte-stats">
+                        <div class="etiquette-stats">Palmarès</div>
+                        <div class="ligne-stat" style="--couleur-stat:#DA291C">
+                            <span class="nom-stat">Ligue des Champions</span>
+                            <span class="chiffre-stat" style="color:#DA291C">7</span>
+                        </div>
+                        <div class="ligne-stat" style="--couleur-stat:#DA291C">
+                            <span class="nom-stat">Titres Serie A</span>
+                            <span class="chiffre-stat" style="color:#DA291C">16</span>
+                        </div>
+                        <div class="ligne-stat" style="--couleur-stat:#DA291C">
+                            <span class="nom-stat">Coupe du Monde des clubs</span>
+                            <span class="chiffre-stat" style="color:#DA291C">1</span>
+                        </div>
+                        <div class="ligne-stat" style="--couleur-stat:#DA291C">
+                            <span class="nom-stat">Coupes d'Europe UEFA</span>
+                            <span class="chiffre-stat" style="color:#DA291C">5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="separateur-carte"></div>
+                <div class="carte-bas">
+                    <div class="etiquette-joueurs">Légendes du club</div>
+                    <div class="grille-joueurs">
+                        <div class="tuile-joueur" style="--couleur-tuile:rgba(218,41,28,0.55);">
+                            <div class="avatar-joueur" id="maldini"></div>
+                            <div class="nom-joueur">Paolo Maldini</div>
+                            <div class="role-joueur">Défenseur · 5 Ligues des Champions .5 Supercoupes d’Europe.Capitaine emblématique, il a incarné la fidélité et l’élégance du Milan.</div>
+                            <div class="ere-joueur">1985 – 2009</div>
+                        </div>
+                        <div class="tuile-joueur" style="--couleur-tuile:rgba(218,41,28,0.55);">
+                            <div class="avatar-joueur" id="pirlo"></div>
+                            <div class="nom-joueur">Andrea Pirlo</div>
+                            <div class="role-joueur">Milieu de terrain reculé · 2× Ligue de champions · 2 Supercoupes de l’UEFA.Ses passes longues et ses coups francs millimétrés ont fait de lui un maître du tempo.</div>
+                            <div class="ere-joueur">2001 – 2011</div>
+                        </div>
+                        <div class="tuile-joueur" style="--couleur-tuile:rgba(218,41,28,0.55);">
+                            <div class="avatar-joueur" id="basten"></div>
+                            <div class="nom-joueur">Van Basten</div>
+                            <div class="role-joueur">Attaquant · 3× Ballon D'or · 3× Ligues de champions.2 Supercoupes d’Europe. Attaquant élégant, technique spectaculaire, capable de marquer des buts incroyables.</div>
+                            <div class="ere-joueur">1987 – 1995</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pied-carte">
+                    <p class="description-pied">La plus grande dynasty italienne. 7 Ligues des Champions bâties par des générations de géants.</p>
+                    <a href="https://www.acmilan.com/en"><button class="bouton-explorer" style="background:#DA291C;color:#fff">Explorer →</button></a>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>Sport reussie, <span>santé</span> assurée</p>
+    </footer>
+</body>
+</html>

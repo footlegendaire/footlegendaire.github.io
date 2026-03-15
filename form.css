@@ -1,0 +1,307 @@
+
+  /* ── Conteneur principal ── */
+  .conteneur-principal {
+    display: flex;
+    width: 100%;
+    max-width: 960px;
+    min-height: 620px;
+    box-shadow: 0 0 80px rgba(0, 0, 0, 0.8), 0 0 0 1px #2a2a2a;
+  }
+
+  /* ── Panneau gauche doré ── */
+  .panneau-gauche {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 42%;
+    background-color: #f5c518;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .panneau-gauche::before {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    right: -60px;
+    width: 260px;
+    height: 260px;
+    border: 40px solid rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+  }
+
+  .panneau-gauche::after {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: 20px;
+    width: 160px;
+    height: 160px;
+    border: 28px solid rgba(0, 0, 0, 0.06);
+    border-radius: 50%;
+  }
+
+  .logo-texte {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #0d0d0d;
+  }
+
+  .logo-texte .accent-logo {
+    opacity: 0.45;
+  }
+
+  .titre-gauche {
+    position: relative;
+    z-index: 1;
+  }
+
+  .grand-titre {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 72px;
+    line-height: 0.9;
+    color: #0d0d0d;
+    letter-spacing: 2px;
+  }
+
+  .sous-titre-gauche {
+    font-size: 13px;
+    font-style: italic;
+    color: rgba(13, 13, 13, 0.65);
+    margin-top: 16px;
+    line-height: 1.6;
+    max-width: 220px;
+  }
+
+  .stats-rangee {
+    display: flex;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .bloc-stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chiffre-stat {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: #0d0d0d;
+  }
+
+  .libelle-stat {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(13, 13, 13, 0.55);
+  }
+
+  /* ── Panneau droit sombre ── */
+  .panneau-droite {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 58%;
+    background-color: #111111;
+    padding: 52px 48px;
+  }
+
+  .en-tete-formulaire {
+    margin-bottom: 32px;
+  }
+
+  .titre-formulaire {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 34px;
+    letter-spacing: 2px;
+    color: #ffffff;
+    line-height: 1;
+  }
+
+  .titre-formulaire .accent-jaune {
+    color: #f5c518;
+  }
+
+  .description-formulaire {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* ── Champs ── */
+  .rangee-champs {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+
+  .groupe-champ {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 6px;
+  }
+
+  .groupe-champ-plein {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+
+  .etiquette {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .champ-saisie {
+    background-color: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: #ffffff;
+    font-family: 'Barlow', sans-serif;
+    outline: none;
+    transition: border-color 0.2s, background-color 0.2s;
+    width: 100%;
+  }
+
+  .champ-saisie:focus {
+    border-color: #f5c518;
+    background-color: #1e1c00;
+  }
+
+  .champ-saisie::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .liste-deroulante {
+    background-color: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: 'Barlow', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    appearance: none;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23f5c518' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+
+  .liste-deroulante:focus {
+    border-color: #f5c518;
+  }
+
+  /* ── Séparateur ── */
+  .ligne-separatrice {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .trait {
+    flex: 1;
+    height: 1px;
+    background-color: #2a2a2a;
+  }
+
+  .texte-ou {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.25);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ── Case à cocher ── */
+  .case-accord {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 24px;
+    cursor: pointer;
+  }
+
+  .coche {
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    accent-color: #f5c518;
+    cursor: pointer;
+    margin-top: 2px;
+  }
+
+  .texte-accord {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.35);
+    line-height: 1.5;
+  }
+
+  .lien-jaune {
+    color: #f5c518;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  /* ── Bouton ── */
+  .bouton-inscription {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #f5c518;
+    color: #0d0d0d;
+    border: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(245, 197, 24, 0.25);
+  }
+
+  .bouton-inscription:hover {
+    background-color: #ffd700;
+    box-shadow: 0 6px 30px rgba(245, 197, 24, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .bouton-inscription:active {
+    transform: translateY(0);
+  }
+
+  /* ── Pied ── */
+  .pied-formulaire {
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.25);
+    margin-top: 20px;
+  }
+
+  .lien-connexion {
+    color: #f5c518;
+    cursor: pointer;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .lien-connexion:hover {
+    text-decoration: underline;
+  }
+
+  

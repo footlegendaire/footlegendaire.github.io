@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FootLégendaire — Inscription</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="form.css">
+</head>
+<body>
+
+  
+  <header>
+        <div class="container">
+            <div>
+
+                <div class="logo">
+                    FOOT<span class="accent">LEGENDAIRE</span> 
+                </div>
+                <ul class="nav-links">
+                    <li>
+                        <a href="index.html" >
+                            <img src="image/Home.jpeg" alt="" class="nav-img">
+                            Accueil
+                        </a>
+                    </li>
+                    <li>
+                        <a href="championat.html">
+                            <img src="image/Trophy.jpeg" alt="" class="nav-img">
+                            Championnats
+                        </a>
+                    </li>
+                    <li>
+                        <a href="club.html">
+                            <img src="image/club.jpeg" alt="" class="nav-img">
+                            Clubs
+                        </a>
+                    </li>
+                    <li>
+                        <a href="business.html">
+                            <img src="image/busness.jpeg" alt="" class="nav-img">
+                            Business
+                        </a>
+                    </li>
+                    <li>
+                        <a href="apropos.html">
+                            <img src="image/apropos.jpeg" alt="" class="nav-img">
+                            À propos
+                        </a>
+                    </li>
+                </ul>    
+                    <a href="#" class="inscription" class="active">Inscription</a>
+                </div>
+            </div>    
+        </div>
+    </header>
+    <main class="content-section container">
+        <div class="conteneur-principal">
+
+    <!-- ── Panneau gauche ── -->
+    <div class="panneau-gauche">
+
+      <div class="logo-texte">
+        FOOT<span class="accent-logo">LÉGENDAIRE</span>
+      </div>
+
+      <div class="titre-gauche">
+        <div class="grand-titre">RE<br>JOIN-<br>GNEZ<br>NOUS</div>
+        <p class="sous-titre-gauche">
+          Raconter le football comme il mérite d'être raconté : avec passion, précision et respect pour son histoire.
+        </p>
+      </div>
+
+      <div class="stats-rangee">
+        <div class="bloc-stat">
+          <span class="chiffre-stat">2021</span>
+          <span class="libelle-stat">Depuis</span>
+        </div>
+        <div class="bloc-stat">
+          <span class="chiffre-stat">50K+</span>
+          <span class="libelle-stat">Membres</span>
+        </div>
+        <div class="bloc-stat">
+          <span class="chiffre-stat">4</span>
+          <span class="libelle-stat">Leagues</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── Panneau droit ── -->
+    <div class="panneau-droite">
+
+      <div class="en-tete-formulaire">
+        <div class="titre-formulaire">CRÉER MON <span class="accent-jaune">COMPTE</span></div>
+        <p class="description-formulaire">Rejoignez la communauté des passionnés du ballon rond</p>
+      </div>
+
+      <div class="rangee-champs">
+        <div class="groupe-champ">
+          <label class="etiquette" for="prenom">Prénom</label>
+          <input class="champ-saisie" type="text" id="prenom" name="prenom" placeholder="Kylian">
+        </div>
+        <div class="groupe-champ">
+          <label class="etiquette" for="nom">Nom</label>
+          <input class="champ-saisie" type="text" id="nom" name="nom" placeholder="Dupont">
+        </div>
+      </div>
+
+      <div class="groupe-champ-plein">
+        <label class="etiquette" for="email">Adresse e-mail</label>
+        <input class="champ-saisie" type="email" id="email" name="email" placeholder="vous@exemple.com">
+      </div>
+
+      <div class="rangee-champs">
+        <div class="groupe-champ">
+          <label class="etiquette" for="mot-de-passe">Mot de passe</label>
+          <input class="champ-saisie" type="password" id="mot-de-passe" name="mot-de-passe" placeholder="••••••••">
+        </div>
+        <div class="groupe-champ">
+          <label class="etiquette" for="confirmation">Confirmer</label>
+          <input class="champ-saisie" type="password" id="confirmation" name="confirmation" placeholder="••••••••">
+        </div>
+      </div>
+
+      <div class="ligne-separatrice">
+        <div class="trait"></div>
+        <span class="texte-ou">Votre profil</span>
+        <div class="trait"></div>
+      </div>
+
+      <div class="rangee-champs">
+        <div class="groupe-champ">
+          <label class="etiquette" for="club">Club favori</label>
+          <select class="liste-deroulante" id="club" name="club">
+            <option value="" disabled selected>Sélectionner</option>
+            <option value="psg">Paris Saint-Germain</option>
+            <option value="om">Olympique de Marseille</option>
+            <option value="ol">Olympique Lyonnais</option>
+            <option value="asm">AS Monaco</option>
+            <option value="real">Real Madrid</option>
+            <option value="barca">FC Barcelone</option>
+            <option value="city">Manchester City</option>
+            <option value="liverpool">Liverpool FC</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+        <div class="groupe-champ">
+          <label class="etiquette" for="pays">Pays</label>
+          <select class="liste-deroulante" id="pays" name="pays">
+            <option value="" disabled selected>Sélectionner</option>
+            <option value="fr">France</option>
+            <option value="sn">Sénégal</option>
+            <option value="ci">Côte d'Ivoire</option>
+            <option value="ma">Maroc</option>
+            <option value="dz">Algérie</option>
+            <option value="es">Espagne</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+      </div>
+
+      <label class="case-accord">
+        <input type="checkbox" class="coche" name="accord" id="accord">
+        <span class="texte-accord">
+          J'accepte les <a class="lien-jaune">conditions d'utilisation</a> et la
+          <a class="lien-jaune">politique de confidentialité</a> de FootLégendaire.
+        </span>
+      </label>
+
+      <button class="bouton-inscription" type="submit">REJOINDRE L'ÉQUIPE</button>
+
+      <p class="pied-formulaire">
+        Déjà membre ? <a href="#" class="lien-connexion">Se connecter</a>
+      </p>
+
+    </div>
+
+  </div>
+    </main>
+    <footer>
+        <p>Sport reussie,<span>santé assurée</span></p>
+    </footer>
+</body>
+</html>
+

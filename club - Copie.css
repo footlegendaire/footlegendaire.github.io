@@ -1,0 +1,689 @@
+/* ══════════════════════════════════════════════
+       VARIABLES GLOBALES
+    ══════════════════════════════════════════════ */
+    :root {
+      --or:           #f39c12;
+      --or-clair:     #f5c040;
+      --sombre:       #06080f;
+      --sombre-2:     #0d1120;
+      --blanc:        #ffffff;
+      --attenué:      rgba(255,255,255,0.42);
+      --bordure:      rgba(255,255,255,0.06);
+      --bordure-fine: rgba(255,255,255,0.03);
+      --bleu:         #2980b9;
+      --bleu-clair:   #3498db;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--sombre);
+      color: var(--blanc);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ── Texture grain animée ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: .45;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Halo doré ambiant ── */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -25vh;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90vw;
+      height: 70vh;
+      background: radial-gradient(ellipse at 50% 0%, rgba(243,156,18,0.07) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container { position: relative; z-index: 1; }
+
+    /* ══════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════ */
+    .hero {
+  padding: 5.5rem 2.5rem 4.5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 4rem;
+  align-items: end;
+  border-bottom: 1px solid var(--bordure);
+  position: relative;
+  overflow: hidden;
+  background-image: url('image/clubs.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9); /* ✅ L'overlay sombre ici */
+  z-index: 0;
+}
+    /* Ligne décorative gauche pulsante */
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: 2.5rem;
+      top: 3rem; bottom: 3rem;
+      width: 2px;
+      background: linear-gradient(180deg, transparent, var(--or), transparent);
+      animation: pulsation-barre 3.5s ease-in-out infinite;
+    }
+
+    @keyframes pulsation-barre {
+      0%, 100% { opacity: .35; }
+      50%       { opacity: 1; }
+    }
+
+    .hero-titre {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(52px, 8vw, 96px);
+      font-weight: 700;
+      line-height: .92;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      padding-left: 1.5rem;
+      animation: entree-bas .9s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    .hero-titre em {
+      font-style: normal;
+      color: var(--or);
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Trait doré animé sous "légendaires" */
+    .hero-titre em::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--or), transparent);
+      animation: elargissement .9s .35s cubic-bezier(.22,1,.36,1) both;
+      transform-origin: left;
+    }
+
+    @keyframes elargissement {
+      from { transform: scaleX(0); }
+      to   { transform: scaleX(1); }
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(255,255,255,0.52);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-top: 1.75rem;
+      padding-left: 1.5rem;
+      animation: entree-bas .9s .12s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    .hero-meta {
+      display: flex;
+      margin-top: 1.75rem;
+      padding-left: 1.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--attenué);
+      animation: entree-bas .9s .22s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    .hero-meta span { padding: 0 1rem; border-right: 1px solid rgba(255,255,255,0.1); }
+    .hero-meta span:first-child { padding-left: 0; }
+    .hero-meta span:last-child  { border-right: none; }
+
+    /* Stats hero */
+    .hero-stats {
+      text-align: right;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      animation: entree-droite .9s .08s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    .hero-stat-val {
+      font-family: 'Oswald', sans-serif;
+      font-size: 60px;
+      font-weight: 700;
+      color: var(--or);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      animation: pulsation-or 4s ease-in-out infinite;
+    }
+
+    @keyframes pulsation-or {
+      0%, 100% { text-shadow: 0 0 40px rgba(243,156,18,0.4); }
+      50%       { text-shadow: 0 0 80px rgba(243,156,18,0.75); }
+    }
+
+    .hero-stat-etiq {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--attenué);
+      margin-top: 5px;
+    }
+
+    /* ══════════════════════════════════════════════
+       ANIMATIONS ENTRÉE
+    ══════════════════════════════════════════════ */
+    @keyframes entree-bas {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes entree-droite {
+      from { opacity: 0; transform: translateX(28px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION CLUBS
+    ══════════════════════════════════════════════ */
+    .section { padding: 3.5rem 2.5rem 5rem; }
+
+    .entete-section {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .entete-section h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--attenué);
+      white-space: nowrap;
+    }
+
+    .ligne-separateur {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.08), transparent);
+    }
+
+    .etiquette-section {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--or);
+      border: 1px solid rgba(243,156,18,0.22);
+      padding: 3px 12px;
+      border-radius: 20px;
+      background: rgba(243,156,18,0.05);
+    }
+
+    /* ══════════════════════════════════════════════
+       CARTE CLUB
+    ══════════════════════════════════════════════ */
+    .carte-club {
+      background: var(--sombre-2);
+      border: 1px solid var(--bordure);
+      border-radius: 20px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+      position: relative;
+      transition: border-color .35s, transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s;
+    }
+
+    .carte-club:hover {
+      transform: translateY(-5px);
+      border-color: rgba(243,156,18,0.18);
+      box-shadow:
+        0 28px 70px rgba(0,0,0,.55),
+        0 0 0 1px rgba(243,156,18,0.07),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    /* Reflet supérieur au hover */
+    .carte-club::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+      opacity: 0;
+      transition: opacity .35s;
+    }
+    .carte-club:hover::before { opacity: 1; }
+
+    /* ── Bande accent avec shimmer CSS ── */
+    .bande-accent {
+      height: 3px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bande-accent::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.65) 50%, transparent 100%);
+      animation: shimmer-bande 3s ease-in-out infinite;
+    }
+
+    @keyframes shimmer-bande {
+      0%   { transform: translateX(-100%); }
+      50%  { transform: translateX(100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* ── Haut carte ── */
+    .carte-haut {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      min-height: 210px;
+    }
+
+    /* ── Identité ── */
+    .carte-identite {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 2.25rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Halo coloré derrière le logo au hover */
+    .carte-identite::after {
+      content: '';
+      position: absolute;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: var(--couleur-halo, rgba(243,156,18,0.12));
+      filter: blur(45px);
+      opacity: 0;
+      transition: opacity .5s;
+      pointer-events: none;
+    }
+    .carte-club:hover .carte-identite::after { opacity: 1; }
+
+    .numero-carte {
+      position: absolute;
+      top: 6px; left: 10px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 80px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.03);
+      line-height: 1;
+      letter-spacing: -0.06em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ── Logo ── */
+    .enveloppe-logo {
+      width: 88px; height: 88px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.04);
+      overflow: hidden;
+      position: relative; z-index: 1;
+      transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s, border-color .4s;
+    }
+
+    .carte-club:hover .enveloppe-logo {
+      transform: scale(1.1) rotate(-3deg);
+      box-shadow: 0 10px 35px rgba(0,0,0,.5);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    .enveloppe-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+    .logo-placeholder   { text-align: center; }
+    .icone-logo         { width: 22px; height: 22px; opacity: .2; display: block; margin: 0 auto; }
+    .texte-logo         { font-size: 9px; color: rgba(255,255,255,0.2); }
+
+    .nom-club {
+      font-family: 'Oswald', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--blanc);
+      text-align: center;
+      position: relative; z-index: 1;
+    }
+
+    .sous-club {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      color: var(--attenué);
+      text-align: center;
+      letter-spacing: .04em;
+      position: relative; z-index: 1;
+    }
+
+    .badge-fondation {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      padding: 3px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.32);
+      letter-spacing: .07em;
+      position: relative; z-index: 1;
+      transition: border-color .25s, color .25s;
+    }
+    .carte-club:hover .badge-fondation {
+      border-color: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.55);
+    }
+
+    /* ── Stats ── */
+    .carte-stats {
+      padding: 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 8px;
+      border-left: 1px solid var(--bordure);
+    }
+
+    .etiquette-stats {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--attenué);
+      margin-bottom: 6px;
+    }
+
+    .ligne-stat {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: var(--bordure-fine);
+      border: 1px solid var(--bordure);
+      position: relative;
+      overflow: hidden;
+      transition: background .2s, border-color .2s, padding-left .25s;
+    }
+
+    /* Barre latérale colorée qui apparaît au hover */
+    .ligne-stat::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 0;
+      background: var(--couleur-stat, var(--or));
+      transition: width .3s ease;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .ligne-stat:hover::before { width: 3px; }
+    .ligne-stat:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.1);
+      padding-left: 22px;
+    }
+
+    .nom-stat   { font-size: 13px; color: rgba(255,255,255,0.58); font-weight: 300; }
+
+    .chiffre-stat {
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      transition: transform .2s;
+    }
+    .ligne-stat:hover .chiffre-stat { transform: scale(1.12); }
+
+    /* ── Séparateur ── */
+    .separateur-carte {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--bordure) 20%, var(--bordure) 80%, transparent);
+      margin: 0 2rem;
+    }
+
+    /* ── Bas carte : joueurs ── */
+    .carte-bas { padding: 1.75rem 2rem; }
+
+    .etiquette-joueurs {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--attenué);
+      margin-bottom: 14px;
+    }
+
+    .grille-joueurs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .tuile-joueur {
+      background: var(--bordure-fine);
+      border: 1px solid var(--bordure);
+      border-radius: 12px;
+      padding: 18px 12px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: background .25s, border-color .25s, transform .3s cubic-bezier(.22,1,.36,1);
+    }
+
+    /* Reflet diagonal glissant CSS pur */
+    .tuile-joueur::before {
+      content: '';
+      position: absolute;
+      top: -60%; left: -70%;
+      width: 55%; height: 220%;
+      background: linear-gradient(105deg, transparent, rgba(255,255,255,0.07), transparent);
+      transform: skewX(-20deg);
+      transition: left .55s ease;
+    }
+    .tuile-joueur:hover::before { left: 130%; }
+
+    /* Trait coloré en bas de la tuile */
+    .tuile-joueur::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--couleur-tuile, rgba(243,156,18,0.4));
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .3s ease;
+    }
+    .tuile-joueur:hover::after { transform: scaleX(1); }
+
+    .tuile-joueur:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.1);
+      transform: translateY(-4px);
+    }
+
+    .avatar-joueur {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .03em;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform .3s, box-shadow .3s;
+      flex-shrink: 0;
+    }
+    .tuile-joueur:hover .avatar-joueur {
+      transform: scale(1.08);
+      box-shadow: 0 6px 20px rgba(0,0,0,.4);
+    }
+
+    #maldini {
+      background-image: url(imagemilan/maldini.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    #ronaldinho {
+      background-image: url(imagebarca/ranldinho.jpeg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    #messi {
+      background-image: url(imagebarca/messi.jpeg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    #puyol {
+      background-image: url(imagebarca/puyol.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    #zidane {
+      background-image:url(imagemadride/zz.jpeg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    #ronaldo {
+      background-image:url(imagemadride/cr7.jpeg) ;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    #modric{
+      background-image:url(imagemadride/modric.webp);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    #pirlo{
+      background-image:url(imagemilan/pirlo.jpeg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    #basten{
+      background-image:url(imagemilan/basten.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .nom-joueur  {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--blanc); 
+      line-height: 1.3; }
+    .role-joueur { font-size: 11px; color: var(--attenué); line-height: 1.4; font-style: italic; font-weight: 300; }
+
+    .ere-joueur {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 10px;
+      color: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.07);
+      padding: 2px 10px;
+      border-radius: 20px;
+      letter-spacing: .06em;
+    }
+
+    /* ── Pied de carte ── */
+    .pied-carte {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding: 1.1rem 2rem;
+      border-top: 1px solid var(--bordure);
+      background: rgba(0,0,0,.18);
+    }
+
+    .description-pied {
+      font-size: 13px;
+      color: rgba(255,255,255,0.42);
+      line-height: 1.6;
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    /* ── Bouton Explorer ── */
+    .bouton-explorer {
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      transition: transform .25s cubic-bezier(.22,1,.36,1), box-shadow .25s, opacity .2s;
+    }
+
+    /* Dégradé interne constant */
+    .bouton-explorer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+    }
+
+    /* Shimmer CSS pur au hover */
+    .bouton-explorer::after {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 60%; height: 100%;
+      background: linear-gradient(105deg, transparent, rgba(255,255,255,0.22), transparent);
+      transform: skewX(-20deg);
+      transition: left .45s ease;
+    }
+    .bouton-explorer:hover::after { left: 160%; }
+
+    .bouton-explorer:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 28px rgba(0,0,0,.45);
+      opacity: .92;
+    }
+

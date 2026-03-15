@@ -1,0 +1,433 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #0a0e17;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════════ */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(6,8,15,0.88);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+/* Ligne dorée pulsante sous le header */
+header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(243,156,18,0.3), transparent);
+    animation: lueur-ligne 4s ease-in-out infinite;
+}
+
+@keyframes lueur-ligne {
+    0%, 100% { opacity: .4; }
+    50%       { opacity: 1; }
+}
+
+header > .container > div {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 2.5rem;
+    height: 56px;        /* hauteur fixe — ne bouge jamais */
+    min-width: 0;
+}
+
+/* ── Logo ── */
+.logo {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #ffffff;
+    flex-shrink: 0;
+    white-space: nowrap;   /* ne se casse jamais */
+}
+
+.accent { color: #f39c12; }
+
+/* ── Navigation ── */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: .2rem;
+    flex: 1;
+    min-width: 0;          /* empêche l'overflow */
+    flex-wrap: nowrap;     /* jamais de retour à la ligne */
+    overflow: hidden;
+}
+
+.nav-links a {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    padding: 0 .85rem;
+    height: 34px;          /* hauteur fixe sur tous les liens */
+    border-radius: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .88rem;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.42);
+    text-decoration: none;
+    position: relative;
+    white-space: nowrap;   /* texte jamais coupé */
+    flex-shrink: 0;        /* les liens ne rétrécissent pas */
+    transition: color .25s, background .25s;
+}
+
+/* Trait doré qui s'élargit sous le lien au hover / actif */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 50%; right: 50%;
+    height: 1px;
+    background: #f39c12;
+    transition: left .25s, right .25s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #ffffff;
+    background: rgba(255,255,255,0.05);
+}
+
+.nav-links a.active        { color: #f39c12; }
+.nav-links a.active::after,
+.nav-links a:hover::after  { left: .85rem; right: .85rem; }
+
+.nav-img {
+    width: 15px; height: 15px;
+    object-fit: cover;
+    border-radius: 3px;
+    opacity: .6;
+    flex-shrink: 0;   /* l'image ne rétrécit pas */
+    display: block;
+}
+
+/* ── Bouton Inscription ── */
+.inscription {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    font-size: .75rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #f39c12;
+    color: #000;
+    padding: 0 1.25rem;
+    height: 34px;           /* hauteur fixe = pas de saut */
+    line-height: 34px;      /* centrage vertical sans padding vertical */
+    border-radius: 6px;
+    margin-left: auto;
+    flex-shrink: 0;         /* ne rétrécit jamais */
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    transition: transform .25s, box-shadow .25s, background .25s;
+}
+
+/* Shimmer CSS pur en boucle */
+.inscription::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 60%; height: 100%;
+    background: linear-gradient(105deg, transparent, rgba(255,255,255,0.38), transparent);
+    transform: skewX(-20deg);
+    animation: shimmer-inscription 3.5s ease-in-out infinite;
+}
+
+@keyframes shimmer-inscription {
+    0%   { left: -100%; }
+    45%  { left: 160%; }
+    100% { left: 160%; }
+}
+
+.inscription:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(243,156,18,0.4);
+    background: #f5c040;
+}
+
+/* ── Burger (mobile) ── */
+.burger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px; height: 18px;
+    cursor: pointer; background: none; border: none; padding: 0;
+}
+.burger-btn span { display: block; width: 100%; height: 2px; background: #fff; transition: all 0.3s ease; }
+
+/* ══════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════ */
+.btn-primary-lg {
+    background: linear-gradient(135deg, #2980b9, #3498db);
+    color: #fff;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: transform .3s, box-shadow .3s;
+}
+
+.btn-primary-lg:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(52, 152, 219, 0.4);
+}
+
+.btn-secondary-lg {
+    background: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background .3s, color .3s;
+}
+
+.btn-secondary-lg:hover {
+    background: #fff;
+    color: #000;
+}
+
+.hero-section {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000') center/cover no-repeat;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(10,14,23,0.3) 0%, rgba(10,14,23,1) 95%);
+    z-index: 1;
+}
+
+.hero-container { position: relative; z-index: 2; text-align: center; width: 100%; }
+
+.hero-content { max-width: 900px; margin: 10vh auto 0; padding: 0 1.5rem; }
+
+.hero-subtitle {
+    font-family: 'Oswald', sans-serif;
+    color: #b0b8c8;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-content h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: -2px;
+    margin-bottom: 0.2rem;
+}
+
+.accent-text { color: #f39c12; }
+
+.hero-content h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #b0b8c8;
+    margin-bottom: 3rem;
+}
+
+.hero-btns {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* ══════════════════════════════════════════════
+   CONTENU PRINCIPAL
+══════════════════════════════════════════════ */
+.content-section {
+    padding: 100px 0;
+    position: relative;
+    z-index: 3;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-title h2 {
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-family: 'Oswald', sans-serif;
+}
+
+.logo-font { font-family: 'Oswald', sans-serif; }
+
+.divider {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #2980b9, #f39c12);
+    margin: 1rem auto;
+}
+
+.lead {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 5rem;
+    color: #b0b8c8;
+    font-size: 1.1rem;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+/* ── Cartes ── */
+.styled-card {
+    background: linear-gradient(145deg, #141b2a, rgba(20,27,42,0.4));
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.styled-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0;
+    height: 3px;
+    background: #2980b9;
+    transition: all 0.3s ease;
+    will-change: width;
+}
+
+.styled-card:hover::before { width: 100%; }
+
+.styled-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    border-color: rgba(255,255,255,0.1);
+}
+.styled-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+}
+
+.styled-card p {
+    color: #b0b8c8;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.card-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: color 0.3s ease;
+}
+
+.card-link:hover { color: #f39c12; }
+
+.card-arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.card-link:hover .card-arrow { transform: translateX(5px); }
+
+/* ══════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════ */
+footer {
+    background: #0d1120;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+    padding: 1.75rem 2rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .88rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.22);
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    display: block;
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, transparent, #d4a017, transparent);
+    margin: 0 auto 1rem;
+}
+
+footer span { color: #d4a017; }
+
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .burger-btn  { display: flex; }
+    .nav-links   { display: none; }
+    header > .container > div { padding: 0 1.25rem; }
+    .inscription { margin-left: auto; }
+
+    .hero-content h1  { font-size: 3rem; }
+    .hero-content h2  { font-size: 1.6rem; }
+    .hero-btns        { flex-direction: column; align-items: center; }
+    .content-section  { padding: 60px 0; }
+    .section-title h2 { font-size: 2rem; }
+}

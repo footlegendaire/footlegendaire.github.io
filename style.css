@@ -1,4 +1,3 @@
-
 * {
     margin: 0;
     padding: 0;
@@ -26,7 +25,6 @@ header {
     border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
-/* Ligne dorée pulsante sous le header */
 header::after {
     content: '';
     position: absolute;
@@ -46,7 +44,7 @@ header > .container > div {
     align-items: center;
     gap: 1.5rem;
     padding: 0 2.5rem;
-    height: 56px;        /* hauteur fixe — ne bouge jamais */
+    height: 56px;
     min-width: 0;
 }
 
@@ -59,7 +57,7 @@ header > .container > div {
     text-transform: uppercase;
     color: #ffffff;
     flex-shrink: 0;
-    white-space: nowrap;   /* ne se casse jamais */
+    white-space: nowrap;
 }
 
 .accent { color: #f39c12; }
@@ -70,8 +68,8 @@ header > .container > div {
     list-style: none;
     gap: .2rem;
     flex: 1;
-    min-width: 0;          /* empêche l'overflow */
-    flex-wrap: nowrap;     /* jamais de retour à la ligne */
+    min-width: 0;
+    flex-wrap: nowrap;
     overflow: hidden;
 }
 
@@ -80,7 +78,7 @@ header > .container > div {
     align-items: center;
     gap: .4rem;
     padding: 0 .85rem;
-    height: 34px;          /* hauteur fixe sur tous les liens */
+    height: 34px;
     border-radius: 8px;
     font-family: 'Barlow Condensed', sans-serif;
     font-size: .88rem;
@@ -89,12 +87,11 @@ header > .container > div {
     color: rgba(255,255,255,0.42);
     text-decoration: none;
     position: relative;
-    white-space: nowrap;   /* texte jamais coupé */
-    flex-shrink: 0;        /* les liens ne rétrécissent pas */
+    white-space: nowrap;
+    flex-shrink: 0;
     transition: color .25s, background .25s;
 }
 
-/* Trait doré qui s'élargit sous le lien au hover / actif */
 .nav-links a::after {
     content: '';
     position: absolute;
@@ -120,7 +117,7 @@ header > .container > div {
     object-fit: cover;
     border-radius: 3px;
     opacity: .6;
-    flex-shrink: 0;   /* l'image ne rétrécit pas */
+    flex-shrink: 0;
     display: block;
 }
 
@@ -135,11 +132,11 @@ header > .container > div {
     background: #f39c12;
     color: #000;
     padding: 0 1.25rem;
-    height: 34px;           /* hauteur fixe = pas de saut */
-    line-height: 34px;      /* centrage vertical sans padding vertical */
+    height: 34px;
+    line-height: 34px;
     border-radius: 6px;
     margin-left: auto;
-    flex-shrink: 0;         /* ne rétrécit jamais */
+    flex-shrink: 0;
     white-space: nowrap;
     position: relative;
     overflow: hidden;
@@ -147,7 +144,6 @@ header > .container > div {
     transition: transform .25s, box-shadow .25s, background .25s;
 }
 
-/* Shimmer CSS pur en boucle */
 .inscription::before {
     content: '';
     position: absolute;
@@ -177,8 +173,26 @@ header > .container > div {
     justify-content: space-between;
     width: 24px; height: 18px;
     cursor: pointer; background: none; border: none; padding: 0;
+    margin-left: auto;
 }
-.burger-btn span { display: block; width: 100%; height: 2px; background: #fff; transition: all 0.3s ease; }
+.burger-btn span {
+    display: block; width: 100%; height: 2px;
+    background: #fff; transition: all 0.3s ease;
+}
+
+/* Menu mobile overlay */
+.nav-mobile-open {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 56px; left: 0; right: 0;
+    background: rgba(6,8,15,0.97);
+    backdrop-filter: blur(20px);
+    padding: 1.5rem 1.25rem 2rem;
+    gap: 0.25rem;
+    z-index: 99;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
 
 /* ══════════════════════════════════════════════
    HERO
@@ -195,6 +209,7 @@ header > .container > div {
     text-decoration: none;
     border-radius: 4px;
     transition: transform .3s, box-shadow .3s;
+    text-align: center;
 }
 
 .btn-primary-lg:hover {
@@ -215,6 +230,7 @@ header > .container > div {
     text-decoration: none;
     border-radius: 4px;
     transition: background .3s, color .3s;
+    text-align: center;
 }
 
 .btn-secondary-lg:hover {
@@ -224,6 +240,7 @@ header > .container > div {
 
 .hero-section {
     height: 100vh;
+    min-height: 500px;
     background: url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000') center/cover no-repeat;
     position: relative;
     display: flex;
@@ -357,6 +374,7 @@ header > .container > div {
     box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     border-color: rgba(255,255,255,0.1);
 }
+
 .styled-card h3 {
     font-family: 'Oswald', sans-serif;
     font-size: 1.6rem;
@@ -417,17 +435,98 @@ footer span { color: #d4a017; }
 
 
 /* ══════════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — TABLETTE LARGE (≤ 1024px)
+══════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+    .hero-content h1   { font-size: 4rem; }
+    .hero-content h2   { font-size: 2rem; }
+    .section-title h2  { font-size: 2.4rem; }
+
+    .nav-links a {
+        padding: 0 .6rem;
+        font-size: .82rem;
+    }
+
+    .grid-layout {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 2rem;
+    }
+
+    .content-section { padding: 80px 0; }
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE — TABLETTE (≤ 768px)
 ══════════════════════════════════════════════ */
 @media (max-width: 768px) {
+
+    /* Header */
+    header > .container > div { padding: 0 1.25rem; gap: 1rem; }
     .burger-btn  { display: flex; }
     .nav-links   { display: none; }
-    header > .container > div { padding: 0 1.25rem; }
-    .inscription { margin-left: auto; }
+    .inscription { margin-left: 0; }
 
-    .hero-content h1  { font-size: 3rem; }
-    .hero-content h2  { font-size: 1.6rem; }
-    .hero-btns        { flex-direction: column; align-items: center; }
+    /* Hero */
+    .hero-section       { height: 85vh; min-height: 480px; }
+    .hero-content       { margin-top: 6vh; }
+    .hero-content h1    { font-size: 3rem; letter-spacing: -1px; }
+    .hero-content h2    { font-size: 1.6rem; margin-bottom: 2rem; }
+    .hero-subtitle      { font-size: 0.78rem; letter-spacing: 2px; }
+    .hero-btns          { flex-direction: column; align-items: center; gap: 1rem; }
+    .btn-primary-lg,
+    .btn-secondary-lg   { width: 100%; max-width: 320px; justify-content: center; font-size: 1rem; padding: .85rem 1.5rem; }
+
+    /* Contenu */
     .content-section  { padding: 60px 0; }
     .section-title h2 { font-size: 2rem; }
+    .lead             { font-size: 1rem; margin-bottom: 3rem; }
+
+    /* Grille : 1 colonne */
+    .grid-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE — MOBILE (≤ 480px)
+══════════════════════════════════════════════ */
+@media (max-width: 480px) {
+
+    /* Header */
+    .logo              { font-size: .95rem; }
+    .inscription       { font-size: .68rem; padding: 0 .9rem; }
+
+    /* Hero */
+    .hero-content h1   { font-size: 2.2rem; }
+    .hero-content h2   { font-size: 1.25rem; letter-spacing: 1px; }
+    .hero-subtitle     { font-size: .72rem; letter-spacing: 1.5px; }
+    .hero-content      { padding: 0 1rem; margin-top: 5vh; }
+    .btn-primary-lg,
+    .btn-secondary-lg  { font-size: .9rem; padding: .75rem 1.2rem; }
+
+    /* Contenu */
+    .container         { padding: 0 1rem; }
+    .content-section   { padding: 40px 0; }
+    .section-title h2  { font-size: 1.6rem; }
+    .lead              { font-size: .95rem; margin-bottom: 2rem; }
+
+    /* Cartes */
+    .styled-card       { padding: 1.5rem; }
+    .styled-card h3    { font-size: 1.35rem; }
+    .styled-card p     { font-size: .9rem; }
+
+    /* Footer */
+    footer             { font-size: .78rem; padding: 1.5rem 1rem; }
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE — TRÈS PETIT MOBILE (≤ 360px)
+══════════════════════════════════════════════ */
+@media (max-width: 360px) {
+    .hero-content h1   { font-size: 1.85rem; }
+    .hero-content h2   { font-size: 1.1rem; }
+    .logo              { font-size: .85rem; letter-spacing: .05em; }
+    .inscription       { display: none; } /* masqué sur très petit écran, burger suffit */
+    .section-title h2  { font-size: 1.4rem; }
 }
